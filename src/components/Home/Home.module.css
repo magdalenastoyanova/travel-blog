@@ -1,0 +1,71 @@
+.video {
+  width: 100%;
+  height: 80vh;
+ width: 100%;
+  object-fit: fill;
+}
+.quotePart {
+  box-shadow: 0px 0px 32px #8898aa26;
+  width: 90%;
+  margin: 1rem auto 0 auto;
+  padding: 1rem 0;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+}
+.quote {
+  color: #722364;
+  text-align: center;
+}
+.author {
+  color: #722364;
+  text-align: end;
+  margin-right: 10rem;
+}
+.joinPart {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0 0 40rem;
+}
+Button {
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: #722364;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 10px;
+  width: 8rem;
+}
+Button:hover {
+  color: #722364;
+  background-color: white;
+  cursor: pointer;
+}
+.joinPart h5 {
+  color: #722364;
+  margin-left: -4rem;
+  padding-top: 1rem;
+}
+
+.reading{
+  display: flex;
+  justify-content: center;
+}
+.reading a{
+  box-shadow: 0px 0px 32px #8898aa26;
+  width: 20%;
+  margin: 1rem auto 1rem auto;
+  padding: 1rem 0;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+ 
+}
+.reading a:hover{
+  background: linear-gradient(90deg, #40185c, #6a2063, #8f2e65, #b04166, #cc5a65, #e37664, #f49465, #ffb56b);
+  color: white;
+}

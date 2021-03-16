@@ -1,0 +1,6 @@
+.lastpiece{
+    background: linear-gradient(90deg, #40185c, #6a2063, #8f2e65, #b04166, #cc5a65, #e37664, #f49465, #ffb56b);
+     color: white;
+    display: flex;
+    justify-content: center;
+}
