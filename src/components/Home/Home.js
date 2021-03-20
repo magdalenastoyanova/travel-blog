@@ -2,17 +2,16 @@ import React from "react";
 import style from "./Home.module.css";
 import video from "./Video/video.mp4";
 import { Button, Radio } from 'antd';
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
   return (
-      <div className={style.container}>
-          <a href="https://www.chanbrothers.com/">
+      <div className={style.container}> 
     <video autoPlay loop muted className={style.video}
     >
       <source src={video} type="video/mp4" />
     </video>
-    </a>
     <article className={style.quotePart}>
      <h1 className={style.quote}> “Man cannot discover new oceans unless he has the courage to lose sight of the shore.”</h1>
      <h5 className={style.author}>
@@ -20,7 +19,7 @@ const Home = () => {
      </h5>
      </article>
      <article className={style.joinPart}>
-     <Button type="primary">Join Now</Button>
+     <Link to="/register"> <Button type="primary">Join Now</Button></Link>
      <h5>Already have a profile? LogIn from Here</h5>
      </article>
      <div className={style.reading}>
@@ -29,7 +28,7 @@ const Home = () => {
          <a href="https://passportsymphony.com/travel-life-hacks/">Travel life hacks</a>
      </div>
      </div>
-     
+  
   );
 };
 
