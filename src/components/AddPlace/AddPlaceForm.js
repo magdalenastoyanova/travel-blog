@@ -1,62 +1,55 @@
-import React from "react";
-import { Form, Input, InputNumber, Button } from "antd";
-import '../utils/messages';
+import React,  { useState } from "react";
+import { Form, Input,  Button } from "antd";
+import style from './AddPlace.module.css'
 
 
-const AddPlaceForm = () => {
-  const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
-  };
-  const validateMessages = {
-    required: "${label} is required!",
-    types: {
-      email: "${label} is not a valid email!",
-      number: "${label} is not a valid number!",
-    },
-  };
+const AddPlaceForm = (props) => {
 
-  const AddPlaceForm = () => {
-    const onFinish = (values) => {
-      console.log(values);
-    };
+  const initialValues = {
+    place: '',
+    imageUrl: '',
+    description: ''
+  }
 
+   const[values, setValues] =  useState(initialValues);
+
+   const handleInput =(e) => {
+     const { name, value } = e.target;
+     setValues({...values, [name]: value})
+   }
+
+    const handleSubmit = (e) =>{
+       e.preventDefault();
+       props.addOrEdit(values);
+       setValues({...initialValues})
+  }
     return (
-      <Form
-        {...layout}
-        name="nest-messages"
-        onFinish={onFinish}
-        validateMessages={validateMessages}
-      >
-        <Form.Item
-          name={["user", "name"]}
-          label="Name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input />
+      <>
+      <h1 className={style.title}>Add Your New Visited Place</h1>
+      <article className={style.formWrapper}>
+       
+        <article className={style.photo}></article>
+      <Form  className={style.form}>
+        <Form.Item label="Name" className= "place" >
+          <Input name="place"  onChange={handleInput} value={values.place} />
         </Form.Item>
-        <Form.Item name={["user", "website"]} label="Photo">
-          <Input />
+        <Form.Item className="photo" label="Photo" className= "imageUrl" >
+          <Input name="imageUrl"  onChange={handleInput} value={values.imageUrl} />
         </Form.Item>
-        <Form.Item name={["user", "introduction"]} label="Description">
-          <Input.TextArea />
+        <Form.Item label="Description" >
+          <Input.TextArea  name="description"  onChange={handleInput} value={values.description} />
         </Form.Item>
-        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-          <Button type="primary" htmlType="submit">
+        <Form.Item>
+          <Button onClick={handleSubmit} name="button" className={style.btn}
+          type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
       </Form>
-    );
-  };
+      </article>
+      </>
+    )
+  
 };
 
 export default AddPlaceForm;

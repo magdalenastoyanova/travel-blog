@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import './components/firebase/config'
+import './components/firebase/config';
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(

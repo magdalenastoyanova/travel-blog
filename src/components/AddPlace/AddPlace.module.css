@@ -1,0 +1,32 @@
+.formWrapper {
+display: flex;
+justify-content: center;
+align-items: center;
+ margin-top: 2rem;
+}
+.photo{
+    background: url(../images/background-add.png) no-repeat;
+    width: 30%;
+    height: 50vh;
+    border-radius: 10px;
+    padding-right: 1rem;
+}
+.form {
+padding-left: 1rem;
+background-color: #C1BDB8;
+width: 30%;
+height: 40vh;
+text-align: center;
+border-radius: 10px;
+padding-top: 20px;
+}
+.btn{
+    text-align: center;
+    margin-left: 12rem;
+}
+
+.title {
+  margin-top: 6rem;
+  text-align: center;
+  color: Purple;
+}
