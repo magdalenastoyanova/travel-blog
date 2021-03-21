@@ -51,6 +51,7 @@ Button:hover {
 .reading{
   display: flex;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 .reading a{
   box-shadow: 0px 0px 32px #8898aa26;

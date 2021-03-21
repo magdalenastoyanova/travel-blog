@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Home.module.css";
 import video from "./Video/video.mp4";
-import { Button, Radio } from 'antd';
+import { Button } from 'antd';
 import { Link } from "react-router-dom";
 
 

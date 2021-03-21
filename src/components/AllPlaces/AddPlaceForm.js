@@ -1,6 +1,8 @@
-import React,  { useState } from "react";
+import React,  { useState, useEffect} from "react";
 import { Form, Input,  Button } from "antd";
 import style from './AddPlace.module.css'
+import { db } from "../firebase/config";
+import { toast } from "react-toastify";
 
 
 const AddPlaceForm = (props) => {
@@ -13,16 +15,39 @@ const AddPlaceForm = (props) => {
 
    const[values, setValues] =  useState(initialValues);
 
-   const handleInput =(e) => {
+   const handleInput = (e) => {
      const { name, value } = e.target;
      setValues({...values, [name]: value})
    }
+    const getPlaceById = async(id) => {
+      const doc = await db.collection('places').doc(id).get(); 
+      setValues({...doc.data()})
+    }
+
+  //  const validateUrl = (str) => {
+
 
     const handleSubmit = (e) =>{
        e.preventDefault();
+      
+       //if(!validateUrl(values.imageUrl)){
+       // return toast('Invalid Url', {
+         //  type: 'warning',
+         //  autoClose: 1000,
+         //})
+       //}
+
        props.addOrEdit(values);
        setValues({...initialValues})
   }
+  useEffect(() => {
+    if(props.currid ===''){
+      setValues({...initialValues})
+    } else{
+        getPlaceById(props.currid);
+    }
+  }, [props.currid])
+  
     return (
       <>
       <h1 className={style.title}>Add Your New Visited Place</h1>
@@ -49,7 +74,6 @@ const AddPlaceForm = (props) => {
       </article>
       </>
     )
-  
-};
+    } 
 
 export default AddPlaceForm;

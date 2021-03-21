@@ -9,7 +9,7 @@ a{text-decoration:none;}
     width:300px;
     height:300px;
     float:left;
-    margin:4px;
+    margin:5rem 2rem;
     background-size:100%;
     background-position:center;
     transition:0.5s;
@@ -28,7 +28,7 @@ a{text-decoration:none;}
     bottom:0;
     left:0;
     right:0;
-  transform:translateY(90%);/*use transform:translateY(100%); to remove footer*/
+  transform:translateY(85%);/*use transform:translateY(100%); to remove footer*/
     background-color:rgba(0,0,0,0.3);
     color:#fff;
     padding:0 8px;
@@ -65,4 +65,15 @@ a{text-decoration:none;}
     padding:8px;
     background-color:rgba(0,0,0,0.6);
     transition:0.5s;
+}
+.image{
+  width: 100%;
+  object-fit: cover;
+  height: 85%;
+}
+
+footer{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }

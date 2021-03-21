@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import './components/firebase/config';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
@@ -11,6 +13,7 @@ ReactDOM.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    <ToastContainer/>
   </React.StrictMode>,
   document.getElementById("root")
 );
