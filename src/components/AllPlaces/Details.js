@@ -15,11 +15,7 @@ const Details = (props) => {
   
  return(
    <>
-     <img src={places.imageUrl} />
-     <h1>{places.name}</h1>
-     <p>
-       {places.description}
-     </p>
+    helloooo
      </>
  )
 };

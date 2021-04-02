@@ -8,15 +8,12 @@ import "./components/firebase/config";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import reportWebVitals from "./reportWebVitals";
-import AuthProvider from "./components/firebase/AuthProvider";
 
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
         <App />
-      </AuthProvider>
     </BrowserRouter>
     <ToastContainer />
   </React.StrictMode>,
