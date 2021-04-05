@@ -29,26 +29,12 @@ class Firebase {
       return this.auth.signOut()
   }
 
-  async register(name, email, password, photoUrl) {
+  async register( email, password) {
       await this.auth.createUserWithEmailAndPassword(email, password).then(registeredUser => {
-          this.db.collection("usersCollection").add({
-              uid: registeredUser.user.uid,
-              bio: 'Empty Bio'
-          })
+          
       });
-      return this.auth.currentUser.updateProfile({
-          displayName: name,
-          photoURL: photoUrl
-      })
   }
 
-  async editUser(name, email, photoUrl) {
-      await this.auth.currentUser.updateProfile({
-          displayName: name,
-          photoURL: photoUrl,
-          email: email
-      })
-  }
 
   async createPlace(place, imageUrl, description) {
       await this.db.collection("place").add({

@@ -2,28 +2,42 @@
   import Header from '../../Header/Header'
 import { useHistory } from 'react-router-dom'
   import { Form, Input, Button } from 'antd';
-  import { auth } from "../../firebase/config";
+  import firebase from "../../firebase/config";
   import style from '../Register/registerModule.css'
 
-      const Register = () =>{
-        const history = useHistory()
-
-        const [email, setEmail] = useState('')
-        const [password, setPassword] = useState('')
+      const Register = (props) =>{
+        const [email, setEmail] = useState('');
+        const [password, setPassword] = useState('');
+        const [rePassword, setRePassword] = useState('');
     
         const signUp = (e) => {
             e.preventDefault()
     
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((authUser) => {
-                   
-                        history.push('/')
-                    })
-                .catch((error) => alert(error.message))
-    
-          
+            if (password !== rePassword) {
+                setError("Password must match!");
+            }
+            else {
+                try {
+                    await firebase.register(email, password);
+                    props.history.push('/places')
+                } catch (error) {
+                    alert(error)
+                }
+            }
         }
-
+        const onChangeHandler = (event) => {
+            const { name, value } = event.currentTarget;
+    
+            if (name === 'userEmail') {
+                setEmail(value);
+            }
+            else if (name === 'userPassword') {
+                setPassword(value);
+            }
+            else if (name === 'rePassword') {
+                setRePassword(value);
+            }
+        }
         return (
           <form>
               <legend>Register</legend>
@@ -32,7 +46,7 @@ import { useHistory } from 'react-router-dom'
                   <span className="input">
                      <i className="fas fa-user"></i>
                       <input type="text" name="username" id="username" value={email}
-                            onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                            onChange={(event) => onChangeHandler(event)} placeholder="Email" />
                   </span>
               </p>
               <p className="field">
@@ -40,7 +54,7 @@ import { useHistory } from 'react-router-dom'
                   <span className="input">
                   <i className="fas fa-lock"></i>
                       <input type="password" name="password" id="password"   value={password}
-                            onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                             onChange={(event) => onChangeHandler(event)} placeholder="Password" />
                   </span>
               </p>
               <p className="field">
