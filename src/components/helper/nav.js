@@ -9,6 +9,7 @@ function getNavigation(isLoggedIn, appUser) {
             title: 'Add Place',
             link: '/create'
         },
+        
         {
             title: 'Logout',
             link: '/logout'

@@ -42,10 +42,26 @@ class Firebase {
          
       })
   }
+  
+  async editPlace(placeId, place, imageUrl, description) {
+    await this.db.collection('places').doc(placeId).set({
+      place: place,
+      imageUrl: imageUrl,
+      description: description
+    }, { merge: true })
+}
+
+  async deletePlace(placeId, currentUser ){
+    await this.db.collection('places').doc(placeId).delete();
+  }
+
   isInitialized() {
     return new Promise(resolve => {
         this.auth.onAuthStateChanged(resolve)
     })
+}
+getCurrentUser() {
+  return this.auth.currentUser;
 }
 }
 

@@ -8,6 +8,7 @@ import Register from './components/Auth/Register/Register'
 import Login from './components/Auth/Login/Login'
 import Details from './components/AllPlaces/Details'
 import AddPlace from './components/AllPlaces/AddPlace'
+import EditPlace from './components/AllPlaces/EditPlace'
 import ErrorPage from './components/404/index'
 
 const Navigation = (props) => {
@@ -41,8 +42,10 @@ const Navigation = (props) => {
                 <Route path="/create">
                     {isLoggedIn ? <AddPlace /> : <Redirect to="/" />}
                 </Route>
-                <Route path="/register" component={Register} />
-                <Route path="/login" component={Login} />
+                <Route path="/edit/:placeId">
+                    {isLoggedIn ? <EditPlace /> : <Redirect to="/" />}
+                </Route>
+                
                 <Route component={ErrorPage} />
             </Switch>
         </BrowserRouter>
