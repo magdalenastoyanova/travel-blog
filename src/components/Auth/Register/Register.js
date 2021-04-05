@@ -5,6 +5,8 @@ import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import firebase from "../../firebase/config";
 import style from "../Register/registerModule.css";
+import { toast } from "react-toastify";
+
 
 const Register = (props) => {
   const history = useHistory();
@@ -22,8 +24,18 @@ const Register = (props) => {
 
     try {
       firebase.register(email, password);
+      toast.success(`Successful registration.`, {
+        type: "success",
+        autoClose: 2000,
+        position: "top-center",
+    })
       history.push("/places");
     } catch (error) {
+      toast.success(`${error}`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
       history.push("/register");
       alert(error);
     }

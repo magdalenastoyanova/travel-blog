@@ -22,7 +22,7 @@ const Home = () => {
      </h5>
      </article>
      <article className={style.joinPart}>
-     <Link to="/register"> <Button type="primary">Join Now</Button></Link>
+     <Link to="/register"> <Button className={style.joinBtn} type="primary">Join Now</Button></Link>
      <h5>Already have a profile? <Link to={'/login'}>LogIn from Here</Link></h5>
      </article>
      <div className={style.reading}>

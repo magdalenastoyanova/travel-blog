@@ -1,0 +1,38 @@
+.logoutWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.logoutHeader{
+   position: absolute;
+   top: 10rem;
+   color: #B22C5D;
+   font-size: 2rem;
+
+}
+.logoutBtn{
+    position: absolute;
+    top: 15rem;
+    background: linear-gradient(
+    135deg,
+    #1f005c,
+    #5b0060,
+    #870160,
+    #ac255e,
+    #ca485c,
+    #e16b5c,
+    #f39060,
+    #ffb56b
+  );
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+}
+.logoutBtn:hover{
+    color: #722364;
+    background: white;
+    cursor: pointer;
+}

@@ -27,7 +27,7 @@
   flex-direction: column;
   margin: 1rem 0 0 40rem;
 }
-Button {
+.joinBtn {
   display: flex;
   justify-content: center;
   color: white;
@@ -37,7 +37,7 @@ Button {
   border-radius: 10px;
   width: 8rem;
 }
-Button:hover {
+.joinBtn:hover {
   color: #722364;
   background-color: white;
   cursor: pointer;

@@ -4,6 +4,7 @@ import {Form, Input, Button} from 'antd';
 import UserContext from '../../Context'
 import Header from '../Header/Header';
 import firebase from '../firebase/config'
+import { toast } from "react-toastify";
 
 const EditPlace = (props) => {
     const history = useHistory();
@@ -15,25 +16,44 @@ const EditPlace = (props) => {
     async function edit() {
 
         if (place.place === '') {
-            alert('Place name must not be empty');
-            return;
+            toast.success(`You must fill the place's name.`, {
+                type: "error",
+                autoClose: 2000,
+                position: "top-center",
+            })
         }
         if (place.imageUrl === '') {
-            alert('Inser photo')
+            toast.success(`You must add photo of the visited place.`, {
+                type: "error",
+                autoClose: 2000,
+                position: "top-center",
+            })
             return;
         }
 
         if (place.description === '') {
-            alert('Description must be fill')
-            return;
+            toast.success(`You must add larger description.`, {
+                type: "error",
+                autoClose: 2000,
+                position: "top-center",
+            })
         }
 
         try {
             await firebase.editPlace(place.id, place.place, place.imageUrl, place.description)
+            toast.success(`Successfully edited the place.`, {
+                type: "success",
+                autoClose: 2000,
+                position: "top-center",
+            })
             history.push(`/places/${place.id}`)
 
         } catch (error) {
-            alert(error);
+            toast.success(`${error}`, {
+                type: "error",
+                autoClose: 2000,
+                position: "top-center",
+            })
         }
 
     }

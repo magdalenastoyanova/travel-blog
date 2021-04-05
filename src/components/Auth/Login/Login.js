@@ -4,6 +4,7 @@ import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
 import { useHistory } from 'react-router-dom'
 import firebase from "../../firebase/config";
+import { toast } from "react-toastify";
 
 const Login = (props) => {
     const history = useHistory()
@@ -23,10 +24,19 @@ const Login = (props) => {
   async function login() {
     try {
       await firebase.login(email, password);
+      toast.success('Successful Login.', {
+        type: "success",
+        autoClose: 2000,
+        position: "top-center",
+    })
       history.push("/places");
     } catch (error) {
+      toast.success(`${error}`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
         history.push("/login");
-      alert(error);
     }
   }
   return (

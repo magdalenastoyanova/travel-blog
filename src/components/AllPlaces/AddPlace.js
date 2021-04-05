@@ -19,22 +19,43 @@ const AddPlace = (props) => {
   async function create() {
 
     if (place === '') {
-        alert('Place name must not be empty');
+      toast.success(`You must fill the place's name.`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
         return;
     }
     if (imageUrl === '') {
-       alert('Photo needed')
+      toast.success(`You must add photo of the visited place.`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
     }
     if(description.length < 10){
-      alert('Add larger description')
+      toast.success(`You must add larger description.`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
     }
 
     try {
         await firebase.createPlace(place, imageUrl, description)
+        toast.success(`Successfully added new place.`, {
+          type: "errsuccessor",
+          autoClose: 2000,
+          position: "top-center",
+      })
         history.push('/places');
 
     } catch (error) {
-        alert(error);
+      toast.success(`${error}`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
     }
 
 }
