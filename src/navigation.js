@@ -6,6 +6,7 @@ import UserContext from './Context'
 import Places from './components/AllPlaces/Places'
 import Register from './components/Auth/Register/Register'
 import Login from './components/Auth/Login/Login'
+import Logout from './components/Auth/Logout/Logout'
 import Details from './components/AllPlaces/Details'
 import AddPlace from './components/AllPlaces/AddPlace'
 import EditPlace from './components/AllPlaces/EditPlace'
@@ -32,7 +33,9 @@ const Navigation = (props) => {
                 <Route path="/register">
                     {!isLoggedIn ? <Register /> : <Redirect to="/" />}
                 </Route>
-                
+                <Route path="/logout">
+                    {isLoggedIn ? <Logout /> : <Redirect to="/login" />}
+                </Route>
                 <Route path="/places" component={Places}/>
  
                 <Route path="/details/:placeId">

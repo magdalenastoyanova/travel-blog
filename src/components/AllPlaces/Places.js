@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import firebase from "../firebase/config";
 import Header from "../Header/Header";
+import Footer from '../Footer/Footer'
 import style from "./Places.module.css";
 import { Link } from "react-router-dom";
 
@@ -39,6 +40,7 @@ const Places = () => {
             );
           })}
         </div>
+        <Footer />
       </div>
     </>
   );

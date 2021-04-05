@@ -6,7 +6,7 @@ const LinkComponent = ({ title, to }) => {
     return (
         <Link to={to}>
         <div>
-            <span onClick={(event) => firebase.logout()}>{title}</span>
+            <span>{title}</span>
         </div>
     </Link>
     )

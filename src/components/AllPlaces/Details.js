@@ -4,6 +4,8 @@ import firebase from "../firebase/config";
 import { Link, useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
 import UserContext from '../../Context'
+import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 import { toast } from "react-toastify";
 
 const Details = (props) => {
@@ -47,12 +49,14 @@ const Details = (props) => {
 
   return (
     <>
+    <Header />
       <h1>{place.place}</h1>
       <img src={place.imageUrl} alt="" />
       <h3>{place.description}</h3>
 
       <Button onClick={deletePlace}>Delete</Button>
       <Button><Link to={`/edit/${place.id}`}>Edit </Link></Button>
+      <Footer />
     </>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Home.module.css";
 import video from "./Video/video.mp4";
 import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 import { Button } from 'antd';
 import { Link } from "react-router-dom";
 
@@ -28,6 +29,7 @@ const Home = () => {
          <a href="https://passportsymphony.com/ultimate-travel-bucket-list/">Bucket-list: Destinations you should go to before you die</a>
          <a href="https://passportsymphony.com/16-rookie-mistakes-all-travelers-do/">Rookie travel mistakes all travelers do</a>
          <a href="https://passportsymphony.com/travel-life-hacks/">Travel life hacks</a>
+         <Footer />
      </div>
      </div>
   );

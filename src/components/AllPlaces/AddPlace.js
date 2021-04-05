@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import {Form, Input, Button} from 'antd';
 import firebase from "../firebase/config";
 import { useHistory } from 'react-router-dom'
+import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
 import style from './AddPlace.module.css'
 import { toast } from "react-toastify";
 
@@ -54,6 +56,7 @@ const onChangeHandler = (event) => {
   return (
     
          <>
+         <Header />
       <h1 className={style.title}>Add Your New Visited Place</h1>
       <article className={style.formWrapper}>
         <article className={style.photo}></article>
@@ -75,6 +78,7 @@ const onChangeHandler = (event) => {
         </Form.Item>
       </Form>
       </article>
+      <Footer />
       </>
 
   );

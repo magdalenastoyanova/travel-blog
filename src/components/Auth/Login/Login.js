@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import Header from '../../Header/Header';
+import Footer from '../../Footer/Footer';
 import { useHistory } from 'react-router-dom'
 import firebase from "../../firebase/config";
 
@@ -68,6 +69,7 @@ const Login = (props) => {
           onClick={login}
         > Login </Button>
       </form>
+      <Footer />
     </>
   );
 };
