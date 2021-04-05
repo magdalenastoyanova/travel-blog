@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer'
 import style from "./Places.module.css";
 import { Link } from "react-router-dom";
 
+
 const Places = () => {
   const [places, setPlaces] = useState([]);
 

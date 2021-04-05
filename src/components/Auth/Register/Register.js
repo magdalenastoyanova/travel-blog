@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Input, Button } from "antd";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import firebase from "../../firebase/config";
-import style from "../Register/registerModule.css";
+import style from "./registerModule.css";
+import photo from '../../images/details.jpg'
 import { toast } from "react-toastify";
 
 
@@ -54,50 +54,53 @@ const Register = (props) => {
   return (
     <>
       <Header />
-      <form  id="register" >
+      <div style={{
+         backgroundImage: `url(${photo})`,backgroundRepeat: 'no-repeat', backgroundSize: 'cover',position: 'relative', width:'100%',height:'100vh',color:'white', opacity: '0.8'
+      }}/>
+      <form  className={style.loginBox} >
       <div className="register-form">
-        <h1>Register</h1>
-        <p className="field">
+        <h1 className={style.title}>Register</h1>
+        <p className="field"  className= {style.placeBox}>
           <label htmlFor="username">Email Adress</label>
           <span className="input">
             <i className="fas fa-user"></i>
             <input
+              className= {style.addInput}
               type="text"
               name="userEmail"
               id="username"
               value={email}
               onChange={(event) => onChangeHandler(event)}
-              placeholder="Email"
             />
           </span>
         </p>
-        <p className="field">
+        <p className="field" className= {style.imageUrlBox}>
           <label htmlFor="password">Password</label>
           <span className="icon">
             <i className="fas fa-lock"></i>
             <input
+              className= {style.addInput}
               type="password"
               name="userPassword"
               id="password"
               value={password}
               onChange={(event) => onChangeHandler(event)}
-              placeholder="Password"
             />
           </span>
         </p>
-        <p className="field">
+        <p className="field" className= {style.descriptionBox}>
           <label htmlFor="password"> Repeat Password</label>
           <span className="input">
             <i className="fas fa-key"></i>
-            <input
+            <input className= {style.addInput}
               type="password"
               name="rePassword"
               id="rePassword"
-              placeholder=" Repeat Password"
             />
           </span>
         </p>
         <input
+        className={style.registerBtn}
           className="button"
           type="submit"
           className="submit"

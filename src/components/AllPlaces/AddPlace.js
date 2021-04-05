@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import style from './AddPlace.module.css'
+import photo from '../images/addPlace.jpeg'
 import { toast } from "react-toastify";
 
 
@@ -78,27 +79,36 @@ const onChangeHandler = (event) => {
     
          <>
          <Header />
+         <div style={{
+         backgroundImage: `url(${photo})`,backgroundRepeat: 'no-repeat', backgroundSize: 'cover',position: 'relative', width:'100%',height:'100vh',color:'white', opacity: '0.8'
+      }}/>
+         <div className={style.loginBox}>
       <h1 className={style.title}>Add Your New Visited Place</h1>
       <article className={style.formWrapper}>
-        <article className={style.photo}></article>
-      <Form  className={style.form}>
-        <Form.Item label="Name" className= "place" >
-          <Input name="place" value={place} onChange={(event) => onChangeHandler(event)} />
+      
+      <Form >
+        <Form.Item label="Place Name" className= {style.placeBox} >
+          <Input name="place" className= {style.addInput} value={place} onChange={(event) => onChangeHandler(event)} />
         </Form.Item>
-        <Form.Item className="photo" label="Photo" className= "imageUrl" >
-          <Input name="imageUrl" value={imageUrl} onChange={(event) => onChangeHandler(event)} />
+        <Form.Item className= {style.imageUrlBox} label="Photo" >
+          <Input className= {style.addInput} name="imageUrl" value={imageUrl} onChange={(event) => onChangeHandler(event)} />
         </Form.Item>
-        <Form.Item label="Description" >
-          <Input.TextArea  name="description" value={description} onChange={(event) => onChangeHandler(event)}/>
+        <Form.Item label="Description" className= {style.descriptionBox}>
+          <Input.TextArea className= {style.addInput} name="description" value={description} onChange={(event) => onChangeHandler(event)}/>
         </Form.Item>
         <Form.Item>
-          <Button onClick={create} name="button" className={style.btn}
+        <span className={style.span}></span>
+        <span className={style.span}></span>
+        <span className={style.span}></span>
+        <span className={style.span}></span>
+          <Button onClick={create} name="button" className={style.addBtn}
           type="primary" htmlType="submit">
-            Submit
+            Create
           </Button>
         </Form.Item>
       </Form>
       </article>
+      </div>
       <Footer />
       </>
 

@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import UserContext from '../../Context'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import style from './Details.module.css'
 import { toast } from "react-toastify";
 
 const Details = (props) => {
@@ -50,13 +51,17 @@ const Details = (props) => {
   return (
     <>
     <Header />
-      <h1>{place.place}</h1>
-      <img src={place.imageUrl} alt="" />
-      <h3>{place.description}</h3>
 
-      <Button onClick={deletePlace}>Delete</Button>
-      <Button><Link to={`/edit/${place.id}`}>Edit </Link></Button>
-      <Footer />
+    <div className={style.detailsPage}>
+      <h1 className={style.heading}>{place.place}</h1>
+      <img className={style.imageUrl} src={place.imageUrl} alt="" />
+      <h3 className={style.descriptionn}>{place.description}</h3>
+       <div className={style.actions}>
+      <Button className={style.deleteBtn} onClick={deletePlace}>Delete</Button>
+      <Button  className={style.editBtn}><Link to={`/edit/${place.id}`}>Edit </Link></Button>
+      </div>
+      </div>
+     <Footer />
     </>
   );
 };
