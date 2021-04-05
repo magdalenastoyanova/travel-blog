@@ -30,9 +30,8 @@ class Firebase {
   }
 
   async register( email, password) {
-      await this.auth.createUserWithEmailAndPassword(email, password).then(registeredUser => {
+      await this.auth.createUserWithEmailAndPassword(email, password)
           
-      });
   }
 
 

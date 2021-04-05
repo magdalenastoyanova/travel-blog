@@ -22,6 +22,7 @@ const Places = () => {
   return (
     <>
       <div>
+        <Header />
         <div>
           <Link className={style.createBtn} to="/create">
             Create new Place

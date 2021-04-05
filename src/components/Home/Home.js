@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
       <div className={style.container}> 
+        <Header />
     <video autoPlay loop muted className={style.video}
     >
       <source src={video} type="video/mp4" />
