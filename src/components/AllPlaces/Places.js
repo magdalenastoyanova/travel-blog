@@ -27,17 +27,18 @@ const Places = () => {
             Create new Place
           </Link>
           {places.map(({ id, place }) => {
-           return (
-            <Link to={`/details/`} className={style.textOverImage}
+            return (
+              <Link
+                to={`/details/`}
+                className={style.textOverImage}
                 key={id}
-                placeId= {id}
                 data-title={place.place}
                 data-text={place.description}
->
-              <img className={style.image} src={place.imageUrl} alt="" />
-             </Link>
-           )     
-})}
+              >
+                <img className={style.image} src={place.imageUrl} alt="" />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </>

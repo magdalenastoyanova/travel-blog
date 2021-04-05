@@ -17,7 +17,7 @@ const Header = () => {
       <ul>
         <Link to="/">
           <li>
-            <img src={logo} alt="travel logo" />
+            <img src={logo} className={style.logo} alt="travel logo" />
           </li>
         </Link>
 

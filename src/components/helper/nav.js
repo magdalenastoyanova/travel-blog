@@ -2,18 +2,18 @@ function getNavigation(isLoggedIn, appUser) {
 
     const authLinksUser = [
         {
-            title: 'All Posts',
+            title: 'All Places',
             link: '/places'
         },
         {
-            title: 'Add Post',
+            title: 'Add Place',
             link: '/create'
         }
     ]
 
     const guestLinks = [
         {
-            title: 'Posts',
+            title: 'Places',
             link: '/posts'
         },
         {
