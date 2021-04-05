@@ -1,41 +1,45 @@
 import React, {useState}  from "react";
 import { Form, Input, Button } from 'antd';
 import { auth } from "../../firebase/config";
+import { useHistory } from 'react-router-dom'
 
-const Login = ({
-    history
-}) => {
-    const onLoginFormSubmitHandler = (e) => {
-        e.preventDefault();
+const Login = () =>{
+    const history = useHistory()
 
-        const username = e.target.username.value;
-        const password = e.target.password.value;
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
 
-        console.log(username, password);
+const Login = (e) => {
+    e.preventDefault()
 
-        auth.signInWithEmailAndPassword(username, password)
-            .then((userCredential) => {
-                history.push('/');
-            });
-    };
+    auth.signInWithEmailAndPassword(email, password)
+        .catch((error) => {
+            alert(error.message)
+            history.push('/login')
+        })
+        .then(history.push('/places'))
+
+}
     return (
-        <form onSubmit={onLoginFormSubmitHandler}>
+        <form >
             <legend>Login</legend>
             <p className="field">
                 <label htmlFor="username">Username</label>
                 <span className="input">
                    <i className="fas fa-user"></i>
-                    <input type="text" name="username" id="username" placeholder="Username" />
+                    <input type="text" name="username"value={email}
+                        onChange={(e) => setEmail(e.target.value)} id="username" placeholder="Username" />
                 </span>
             </p>
             <p className="field">
                 <label htmlFor="password">Password</label>
                 <span className="input">
                 <i className="fas fa-lock"></i>
-                    <input type="password" name="password" id="password" placeholder="Password" />
+                    <input type="password" value={password}
+                        onChange={(e) => setPassword(e.target.value)} name="password" id="password" placeholder="Password" />
                 </span>
             </p>
-            <input className="button" type="submit" className="submit" value="Register" />
+            <input className="button" type="submit" className="submit" value="Register" onClick={Login}/>
     </form>
       );
     };

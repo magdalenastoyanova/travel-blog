@@ -1,20 +1,18 @@
-import React from 'react';
-
+import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import "./components/firebase/config";
+import Navigation from "./navigation";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import reportWebVitals from "./reportWebVitals";
 
-
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+    <App>
+      <Navigation />
+    </App>
     <ToastContainer />
   </React.StrictMode>,
   document.getElementById("root")

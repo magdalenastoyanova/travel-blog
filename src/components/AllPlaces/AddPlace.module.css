@@ -8,17 +8,17 @@ align-items: center;
     background: url(../images/background-add.png) no-repeat;
     width: 30%;
     height: 50vh;
-    border-radius: 10px;
-    padding-right: 1rem;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    
 }
 .form {
-padding-left: 1rem;
 background-color: #C1BDB8;
 width: 30%;
-height: 40vh;
+height: 50vh;
 text-align: center;
-border-radius: 10px;
-padding-top: 20px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
 }
 .btn{
     text-align: center;

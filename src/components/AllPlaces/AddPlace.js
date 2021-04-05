@@ -1,47 +1,107 @@
 import React, { useEffect, useState } from "react";
-import AddPlaceForm from "./AddPlaceForm";
-import { db } from "../firebase/config";
+import {Form, Input, Button} from 'antd';
+import { auth, db } from "../firebase/config";
+import Header from '../Header/Header'
+import { useHistory } from 'react-router-dom'
+import style from './AddPlace.module.css'
 import { toast } from "react-toastify";
 
+
 const AddPlace = () => {
-  const [places, setPlaces] = useState([]);
-  const [currid, setCurrId] = useState("");
+  const history = useHistory()
+  const [userLoggedIn, setUserLoggedIn] = useState(null)
 
-  const addOrEdit = async (newObject) => {
-    try {
-      if (currid === "") {
-        await db.collection("places").doc().set(newObject);
-        toast("New place added!", {
-          type: "success",
-        });
-      } else {
-        await db.collection("places").doc(currid).update(newObject);
-        toast("Place updated sucessfully!", {
-          type: "info",
-        });
-        setCurrId("");
-      }
-    } catch (error) {
-      console.error(error);
+  const [place, setPlace] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [description, setDescription] = useState('');
+
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+        if (authUser) {
+            // user has logged in
+            setUserLoggedIn(authUser)
+
+        } else {
+            // user has logged out
+            setUserLoggedIn(null)
+        }
+    })
+
+    return () => {
+        unsubscribe()
     }
-  };
+}, [userLoggedIn])
 
-  const onDelete = async (id) => {
-    if (window.confirm("Areyou sure you want to delete this place?")) {
-      await db.collection("places").doc(id).delete();
-      toast("Place deleted sucsessfully!", {
-        type: "error",
-        autoClose: 2000,
-      });
-    }
-  };
+const create = () => {
 
+  if (place === '') {
+      alert('Place name must not be empty');
+      return;
+  }
+  if (!imageUrl) {
+    return alert('Please enter image Url.')
+}
+if (!description) {
+    return alert('Please enter description.')
+}
+// Limit length of caption text
+if (description.length > 100) {
+  return alert('Please add description fewer than 100 symbols.')
+}
+
+  try {
+  db.collection('places').add({
+    place: place,
+    imageUrl: imageUrl,
+    description: description
+  })
+  history.push('/places')
+  } catch (error) {
+      alert(error)
+  }
+
+}
+const onChangeHandler = (event) => {
+  const { name, value } = event.currentTarget;
+
+  if (name === 'place') {
+      setPlace(value)
+  }
+  else if (name === 'imageUrl') {
+    setImageUrl(value);
+  }
+  else if (name === 'description') {
+      setDescription(value);
+  }
+}
+   
   return (
-    <>
-      <div>
-        <AddPlaceForm {...{ addOrEdit, currid, places }} />
-      </div>
-    </>
+    
+         <>
+      <h1 className={style.title}>Add Your New Visited Place</h1>
+      <article className={style.formWrapper}>
+        <article className={style.photo}></article>
+      <Form  className={style.form}>
+        <Form.Item label="Name" className= "place" >
+          <Input name="place"  onChange={(event) => onChangeHandler(event)} />
+        </Form.Item>
+        <Form.Item className="photo" label="Photo" className= "imageUrl" >
+          <Input name="imageUrl" onChange={(event) => onChangeHandler(event)} />
+        </Form.Item>
+        <Form.Item label="Description" >
+          <Input.TextArea  name="description" onChange={(event) => onChangeHandler(event)}/>
+        </Form.Item>
+        <Form.Item>
+          <Button onClick={create} name="button" className={style.btn}
+          type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+      </article>
+      </>
+
   );
 };
 

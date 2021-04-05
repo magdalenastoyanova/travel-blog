@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Home.module.css";
 import video from "./Video/video.mp4";
+import Header from '../Header/Header'
 import { Button } from 'antd';
 import { Link } from "react-router-dom";
 
@@ -20,7 +21,7 @@ const Home = () => {
      </article>
      <article className={style.joinPart}>
      <Link to="/register"> <Button type="primary">Join Now</Button></Link>
-     <h5>Already have a profile? LogIn from Here</h5>
+     <h5>Already have a profile? <Link to={'/login'}>LogIn from Here</Link></h5>
      </article>
      <div className={style.reading}>
          <a href="https://passportsymphony.com/ultimate-travel-bucket-list/">Bucket-list: Destinations you should go to before you die</a>
@@ -28,7 +29,6 @@ const Home = () => {
          <a href="https://passportsymphony.com/travel-life-hacks/">Travel life hacks</a>
      </div>
      </div>
-  
   );
 };
 
