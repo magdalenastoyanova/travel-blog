@@ -31,6 +31,12 @@
   padding: 0 10px;
 }
 .logo{
-  width: 30px;
-  height: 10vh;
+  height: 7vh;
+  opacity: 1;
+  list-style: none;
+  background-color:#CB9AA6;
+  border-radius: 50%;
+  border: none;
+  margin-left: -25px;
+  margin-top: -15px;
 }

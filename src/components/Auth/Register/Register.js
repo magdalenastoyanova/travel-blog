@@ -42,10 +42,11 @@ const Register = (props) => {
   return (
     <>
       <Header />
-      <form>
-        <legend>Register</legend>
+      <form  id="register" >
+      <div className="register-form">
+        <h1>Register</h1>
         <p className="field">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Email Adress</label>
           <span className="input">
             <i className="fas fa-user"></i>
             <input
@@ -60,7 +61,7 @@ const Register = (props) => {
         </p>
         <p className="field">
           <label htmlFor="password">Password</label>
-          <span className="input">
+          <span className="icon">
             <i className="fas fa-lock"></i>
             <input
               type="password"
@@ -91,6 +92,7 @@ const Register = (props) => {
           value="Register"
           onClick={signUp}
         />
+      </div>
       </form>
       <Footer />
     </>

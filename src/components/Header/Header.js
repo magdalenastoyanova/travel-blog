@@ -16,11 +16,10 @@ const Header = () => {
     <nav className={style.navigation}>
       <ul>
         <Link to="/">
-          <li>
+          
             <img src={logo} className={style.logo} alt="travel logo" />
-          </li>
+          
         </Link>
-
         <article className={style.listItems}>
          {
                     links.map(nav => {
