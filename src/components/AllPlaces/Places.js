@@ -24,15 +24,13 @@ const Places = () => {
       <div>
         <Header />
         <div>
-          <Link className={style.createBtn} to="/create">
-            Create new Place
-          </Link>
           {places.map(({ id, place }) => {
             return (
               <Link
-                to={`/details/`}
+                to={`/details/${id}`}
                 className={style.textOverImage}
                 key={id}
+                placeId={id}
                 data-title={place.place}
                 data-text={place.description}
               >

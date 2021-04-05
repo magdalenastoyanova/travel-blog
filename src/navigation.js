@@ -34,7 +34,7 @@ const Navigation = (props) => {
                 
                 <Route path="/places" component={Places}/>
  
-                <Route path="/details/:id">
+                <Route path="/details/:placeId">
                      {isLoggedIn ? <Details /> : <Redirect to="/" />}
                 </Route> 
 

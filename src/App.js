@@ -19,7 +19,6 @@ const App = (props) => {
   }
 
   useEffect(() => {
-    console.log("I am called from App")
     firebase.auth.onAuthStateChanged(function (user) {
       if (user) {
         login(user);
