@@ -28,7 +28,7 @@ const AddPlace = (props) => {
     }
 
     try {
-        await firebase.createCat(place, imageUrl, description)
+        await firebase.createPlace(place, imageUrl, description)
         history.push('/places');
 
     } catch (error) {
@@ -65,7 +65,7 @@ const onChangeHandler = (event) => {
           <Input name="imageUrl" value={imageUrl} onChange={(event) => onChangeHandler(event)} />
         </Form.Item>
         <Form.Item label="Description" >
-          <Input.TextArea  name="description" value={imageUrl} onChange={(event) => onChangeHandler(event)}/>
+          <Input.TextArea  name="description" value={description} onChange={(event) => onChangeHandler(event)}/>
         </Form.Item>
         <Form.Item>
           <Button onClick={create} name="button" className={style.btn}

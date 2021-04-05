@@ -37,7 +37,7 @@ class Firebase {
 
 
   async createPlace(place, imageUrl, description) {
-      await this.db.collection("place").add({
+      await this.db.collection("places").add({
         place: place,
         imageUrl: imageUrl,
         description: description,
