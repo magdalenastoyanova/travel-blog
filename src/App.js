@@ -1,35 +1,42 @@
 import React, { useState, useEffect } from 'react'
-import { auth } from './components/firebase/config'
+import firebase from './components/firebase/config'
+import UserContext from './Context'
 import './App.css'
 
 
-function App(props) {
-  const [userLoggedIn, setUserLoggedIn] = useState(null)
+const App = (props) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [appUser, setUser] = useState(null);
+
+  const login = (user) => {
+    setIsLoggedIn(true);
+    setUser(user);
+  }
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    setUser('');
+  }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // user has logged in
-        setUserLoggedIn(authUser)
-
+    console.log("I am called from App")
+    firebase.auth.onAuthStateChanged(function (user) {
+      if (user) {
+        login(user);
       } else {
-        // user has logged out
-        setUserLoggedIn(null)
+        logout();
       }
     })
-
-    return () => {
-      unsubscribe()
-    }
-  }, [userLoggedIn])
+  })
 
   return (
-    <div className="App">
+    <UserContext.Provider value={{ isLoggedIn, appUser, logout: logout }}>
       {props.children}
-    </div>
-  )
+    </UserContext.Provider>
+  );
 }
 
 export default App;
+
 
 

@@ -14,10 +14,58 @@ const firebaseConfig = {
   measurementId: "G-ZPM9K9HPK8",
 };
 
-  const fb = firebase.initializeApp(firebaseConfig);
+class Firebase {
+  constructor() {
+      firebase.initializeApp(firebaseConfig);
+      this.auth = firebase.auth();
+      this.db = firebase.firestore();
+  }
 
+  login(email, password) {
+      return this.auth.signInWithEmailAndPassword(email, password);
+  }
 
+  logout() {
+      return this.auth.signOut()
+  }
 
-export const auth = firebase.auth();
-export const db = fb.firestore();
-export default firebaseConfig;
+  async register(name, email, password, photoUrl) {
+      await this.auth.createUserWithEmailAndPassword(email, password).then(registeredUser => {
+          this.db.collection("usersCollection").add({
+              uid: registeredUser.user.uid,
+              bio: 'Empty Bio'
+          })
+      });
+      return this.auth.currentUser.updateProfile({
+          displayName: name,
+          photoURL: photoUrl
+      })
+  }
+
+  async editUser(name, email, photoUrl) {
+      await this.auth.currentUser.updateProfile({
+          displayName: name,
+          photoURL: photoUrl,
+          email: email
+      })
+  }
+
+  async createCat(name, age, story, breed, imageUrl, gender, medicalStatus) {
+      await this.db.collection("cats").add({
+          name: name,
+          age: age,
+          story: story,
+          breed: breed,
+          imageUrl: imageUrl,
+          CreationTime: new Date(),
+          pendingAdoption: false,
+          requestedBy: '',
+          adoptedBy: '',
+          adoptionStatus: '',
+          gender: gender,
+          medicalStatus: medicalStatus
+      })
+  }
+}
+
+export default new Firebase();
