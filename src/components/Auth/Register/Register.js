@@ -6,23 +6,27 @@ import { useHistory } from 'react-router-dom'
   import style from '../Register/registerModule.css'
 
       const Register = (props) =>{
+        const history = useHistory()
+
         const [email, setEmail] = useState('');
         const [password, setPassword] = useState('');
         const [rePassword, setRePassword] = useState('');
     
-       const signUp = () => {
-    
-            if (password !== rePassword) {
-                alert("Password must match!");
-            }
-            else {
+       const signUp = (e) => {
+    e.preventDefault()
+
+            //if (password != rePassword) {
+            // alert("Password must match!");
+           // }
+            
                 try {
                    firebase.register(email, password);
-                    props.history.push('/places')
+                    history.push('/places')
                 } catch (error) {
+                    history.push('/register')
                     alert(error);
                 }
-            }
+            
         }
         const onChangeHandler = (event) => {
             const { name, value } = event.currentTarget;

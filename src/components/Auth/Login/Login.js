@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import Header from '../../Header/Header';
+import { useHistory } from 'react-router-dom'
 import firebase from "../../firebase/config";
 
 const Login = (props) => {
+    const history = useHistory()
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,8 +22,9 @@ const Login = (props) => {
   async function login() {
     try {
       await firebase.login(email, password);
-      props.history.push("/places");
+      history.push("/places");
     } catch (error) {
+        history.push("/login");
       alert(error);
     }
   }
@@ -30,7 +34,7 @@ const Login = (props) => {
       <form>
         <legend>Login</legend>
         <p className="field">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Your Email</label>
           <span className="input">
             <i className="fas fa-user"></i>
             <input
@@ -38,8 +42,8 @@ const Login = (props) => {
               name="userEmail"
               value={email}
               onChange={(event) => onChangeHandler(event)}
-              id="username"
-              placeholder="Username"
+              id="userEmail"
+              placeholder="Your Email Here"
             />
           </span>
         </p>
@@ -52,18 +56,17 @@ const Login = (props) => {
               value={password}
               onChange={(event) => onChangeHandler(event)}
               name="userPassword"
-              id="password"
-              placeholder="Password"
+              id="userPassword"
+              placeholder="Your Password Here" 
             />
           </span>
         </p>
-        <input
-          className="button"
-          type="submit"
+        <Button
           className="submit"
-          value="Register"
+          type="submit"
+          value="Login"
           onClick={login}
-        />
+        > Login </Button>
       </form>
     </>
   );
