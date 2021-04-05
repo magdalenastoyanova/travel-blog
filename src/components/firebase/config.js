@@ -50,20 +50,12 @@ class Firebase {
       })
   }
 
-  async createCat(name, age, story, breed, imageUrl, gender, medicalStatus) {
-      await this.db.collection("cats").add({
-          name: name,
-          age: age,
-          story: story,
-          breed: breed,
-          imageUrl: imageUrl,
-          CreationTime: new Date(),
-          pendingAdoption: false,
-          requestedBy: '',
-          adoptedBy: '',
-          adoptionStatus: '',
-          gender: gender,
-          medicalStatus: medicalStatus
+  async createPlace(place, imageUrl, description) {
+      await this.db.collection("place").add({
+        place: place,
+        imageUrl: imageUrl,
+        description: description,
+         
       })
   }
 }
