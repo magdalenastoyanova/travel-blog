@@ -14,11 +14,11 @@ import { useHistory } from 'react-router-dom'
             e.preventDefault()
     
             if (password !== rePassword) {
-                setError("Password must match!");
+                alert("Password must match!");
             }
             else {
                 try {
-                    await firebase.register(email, password);
+                    firebase.register(email, password);
                     props.history.push('/places')
                 } catch (error) {
                     alert(error)

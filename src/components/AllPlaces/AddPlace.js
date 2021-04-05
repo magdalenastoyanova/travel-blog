@@ -1,79 +1,54 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {Form, Input, Button} from 'antd';
-import { auth, db } from "../firebase/config";
-import Header from '../Header/Header'
+import firebase from "../firebase/config";
 import { useHistory } from 'react-router-dom'
 import style from './AddPlace.module.css'
 import { toast } from "react-toastify";
 
 
-const AddPlace = () => {
+const AddPlace = (props) => {
   const history = useHistory()
-  const [userLoggedIn, setUserLoggedIn] = useState(null)
 
   const [place, setPlace] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
 
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-        if (authUser) {
-            // user has logged in
-            setUserLoggedIn(authUser)
+  async function create() {
 
-        } else {
-            // user has logged out
-            setUserLoggedIn(null)
-        }
-    })
-
-    return () => {
-        unsubscribe()
+    if (place === '') {
+        alert('Place name must not be empty');
+        return;
     }
-}, [userLoggedIn])
+    if (imageUrl === '') {
+       alert('Photo needed')
+    }
+    if(description.length < 10){
+      alert('Add larger description')
+    }
 
-const create = () => {
+    try {
+        await firebase.createCat(place, imageUrl, description)
+        history.push('/places');
 
-  if (place === '') {
-      alert('Place name must not be empty');
-      return;
-  }
-  if (!imageUrl) {
-    return alert('Please enter image Url.')
-}
-if (!description) {
-    return alert('Please enter description.')
-}
-// Limit length of caption text
-if (description.length > 100) {
-  return alert('Please add description fewer than 100 symbols.')
-}
-
-  try {
-  db.collection('places').add({
-    place: place,
-    imageUrl: imageUrl,
-    description: description
-  })
-  history.push('/places')
-  } catch (error) {
-      alert(error)
-  }
+    } catch (error) {
+        alert(error);
+    }
 
 }
+
 const onChangeHandler = (event) => {
-  const { name, value } = event.currentTarget;
+    const { name, value } = event.currentTarget;
 
-  if (name === 'place') {
-      setPlace(value)
-  }
-  else if (name === 'imageUrl') {
-    setImageUrl(value);
-  }
-  else if (name === 'description') {
-      setDescription(value);
-  }
+    if (name === 'place') {
+        setPlace(value)
+    }
+    else if (name === 'imageUrl') {
+        setImageUrl(value);
+    }
+    else if (name === 'description') {
+        setDescription(value);
+    }
 }
    
   return (
@@ -84,13 +59,13 @@ const onChangeHandler = (event) => {
         <article className={style.photo}></article>
       <Form  className={style.form}>
         <Form.Item label="Name" className= "place" >
-          <Input name="place"  onChange={(event) => onChangeHandler(event)} />
+          <Input name="place" value={place} onChange={(event) => onChangeHandler(event)} />
         </Form.Item>
         <Form.Item className="photo" label="Photo" className= "imageUrl" >
-          <Input name="imageUrl" onChange={(event) => onChangeHandler(event)} />
+          <Input name="imageUrl" value={imageUrl} onChange={(event) => onChangeHandler(event)} />
         </Form.Item>
         <Form.Item label="Description" >
-          <Input.TextArea  name="description" onChange={(event) => onChangeHandler(event)}/>
+          <Input.TextArea  name="description" value={imageUrl} onChange={(event) => onChangeHandler(event)}/>
         </Form.Item>
         <Form.Item>
           <Button onClick={create} name="button" className={style.btn}

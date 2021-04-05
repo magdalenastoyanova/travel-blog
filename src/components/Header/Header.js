@@ -1,52 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { auth } from "../firebase/config";
+import React, { useContext } from "react";
+import logo from '../images/logo.png'
 import getNavigation from '../helper/nav'
 import LinkComponent from '../Link/Link'
 import { Link } from 'react-router-dom'
+import UserContext from '../../Context'
 import style from "./Header.module.css";
 
 const Header = () => {
-  const [userLoggedIn, setUserLoggedIn] = useState(null);
+  const userData = useContext(UserContext);
+  const { isLoggedIn, appUser } = userData;
+  const links = getNavigation(isLoggedIn, appUser);
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // user has logged in
-        setUserLoggedIn(authUser);
-      } else {
-        // user has logged out
-        setUserLoggedIn(null);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, [userLoggedIn]);
-
-
-  const links = getNavigation(userLoggedIn)
-
-
-const Header = () => {
   return (
-    <header >
+  
     <nav className={style.navigation}>
       <ul>
         <Link to="/">
           <li>
-            <img src="./images/logo.png" alt="travel logo" />
+            <img src={logo} alt="travel logo" />
           </li>
         </Link>
+
         <article className={style.listItems}>
-        <Link to="/places">Places</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/logout">Logout</Link>
+         {
+                    links.map(nav => {
+                        return (
+                            <LinkComponent key={nav.title} to={nav.link} title={nav.title} />
+                        )
+                    })
+                }
         </article>
       </ul>
     </nav>
-    </header >
   );
 };
-}
+
 export default Header;

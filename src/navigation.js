@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Home from './components/Home/Home'
+import firebase from '../src/components/firebase/config'
+import UserContext from './Context'
 import Places from './components/AllPlaces/Places'
 import Register from './components/Auth/Register/Register'
 import Login from './components/Auth/Login/Login'
@@ -16,6 +18,7 @@ const Navigation = (props) => {
             setFirebaseInitialized(value)
         })
     })
+    const { isLoggedIn } = useContext(UserContext);
 
     return firebaseInitialized !== false ? (
         <BrowserRouter>
@@ -29,9 +32,8 @@ const Navigation = (props) => {
                     {!isLoggedIn ? <Register /> : <Redirect to="/" />}
                 </Route>
                 
-                <Route path="/places">
-                     {isLoggedIn ? <Places /> : <Redirect to="/" />}
-                 </Route> 
+                <Route path="/places" component={Places}/>
+ 
                 <Route path="/details/:id">
                      {isLoggedIn ? <Details /> : <Redirect to="/" />}
                 </Route> 

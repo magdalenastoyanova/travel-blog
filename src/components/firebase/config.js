@@ -44,6 +44,11 @@ class Firebase {
          
       })
   }
+  isInitialized() {
+    return new Promise(resolve => {
+        this.auth.onAuthStateChanged(resolve)
+    })
+}
 }
 
 export default new Firebase();
