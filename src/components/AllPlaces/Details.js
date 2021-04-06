@@ -59,6 +59,7 @@ const Details = (props) => {
        <div className={style.actions}>
       <Button className={style.deleteBtn} onClick={deletePlace}>Delete</Button>
       <Button  className={style.editBtn}><Link to={`/edit/${place.id}`}>Edit </Link></Button>
+          
       </div>
       </div>
      <Footer />

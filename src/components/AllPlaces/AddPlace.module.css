@@ -62,7 +62,8 @@ align-items: center;
   margin-top: 40px;
   letter-spacing: 2px;
   left: 3rem;
-  
+  border-radius: 10px;
+    border: none;
 }
 .addBtn:hover{
   background: #722364;
