@@ -17,11 +17,9 @@ a{text-decoration:none;}
     border-radius:4px;
     box-shadow:0 0 4px #000;
   }
-  
-  .textOverImage:hover{
-    background-size:110%;
+  .all{
+    background-color: #F4F5F7;
   }
-  
 .textOverImage:before{
   position:absolute;
     top:0;
@@ -45,7 +43,7 @@ a{text-decoration:none;}
     bottom:0;
     left:0;
     right:0;
-    color:#fff;
+    color: whitesmoke;
     padding:8px;
     content:attr(data-text);
     transition:0.5s;
@@ -63,7 +61,7 @@ a{text-decoration:none;}
 .textOverImage:hover:before{
     transform:translateY(0);
     padding:8px;
-    background-color:rgba(0,0,0,0.6);
+    background-color:#32325D1C;
     transition:0.5s;
 }
 .image{

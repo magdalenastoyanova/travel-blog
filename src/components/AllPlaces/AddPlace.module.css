@@ -37,7 +37,9 @@ align-items: center;
   pointer-events: none;
   transition: .5s;
 }
-
+.descriptionBox .addInput{
+  height: 15vh;
+}
 .addInput{
   width: 100%;
   padding:  0;

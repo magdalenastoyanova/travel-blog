@@ -45,7 +45,7 @@ const AddPlace = (props) => {
     try {
         await firebase.createPlace(place, imageUrl, description)
         toast.success(`Successfully added new place.`, {
-          type: "errsuccessor",
+          type: "success",
           autoClose: 2000,
           position: "top-center",
       })

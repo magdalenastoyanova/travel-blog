@@ -34,7 +34,7 @@ const Places = () => {
                 key={id}
                 placeId={id}
                 data-title={place.place}
-                data-text={place.description}
+                data-text={`${place.description.substring(0, 100)}  ...`}
               >
                 <img className={style.image} src={place.imageUrl} alt="" />
               </Link>

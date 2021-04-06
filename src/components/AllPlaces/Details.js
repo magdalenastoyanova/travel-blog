@@ -48,6 +48,7 @@ const Details = (props) => {
     getData();
   }, [getData]);
 
+  const isAuthor = appUser.uid === place.author;
   return (
     <>
     <Header />
@@ -57,8 +58,8 @@ const Details = (props) => {
       <img className={style.imageUrl} src={place.imageUrl} alt="" />
       <h3 className={style.descriptionn}>{place.description}</h3>
        <div className={style.actions}>
-      <Button className={style.deleteBtn} onClick={deletePlace}>Delete</Button>
-      <Button  className={style.editBtn}><Link to={`/edit/${place.id}`}>Edit </Link></Button>
+       { isAuthor ? (<> <Button className={style.deleteBtn} onClick={deletePlace}>Delete</Button>
+      <Button  className={style.editBtn}><Link to={`/edit/${place.id}`}>Edit </Link></Button> </>) : null}
           
       </div>
       </div>

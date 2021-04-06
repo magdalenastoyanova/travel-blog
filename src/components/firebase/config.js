@@ -33,13 +33,13 @@ class Firebase {
       await this.auth.createUserWithEmailAndPassword(email, password)
   }
 
-
-  async createPlace(place, imageUrl, description) {
+  async createPlace(place, imageUrl, description, author) {
+  
       await this.db.collection("places").add({
         place: place,
         imageUrl: imageUrl,
         description: description,
-         
+        author: this.auth.currentUser.uid
       })
   }
   

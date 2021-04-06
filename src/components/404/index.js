@@ -1,23 +1,14 @@
 import style from "./index.module.css";
+import {Button} from 'antd';
 import { Link } from 'react-router-dom'
+import photo from '../images/404page.png'
 const ErrorPage = () => {
   return (
     <>
-    <body className={style.error}>
-      <div className={style.site}>
-        <div className={style.sketch}>
-          <div className={style.beeSketch} className={style.red}>
-          </div>
-          <div className={style.beeSketch} className={style.blue}></div>
-        </div>
-
-        <h1 className={style.titleError}>
-          404:
-          <small>Page Not Found</small>
-         <Link to="/"><button className={style.buton} >GO BACK TO HOME PAGE</button></Link> 
-        </h1>
-      </div>
-      </body>
+    <div style={{
+         backgroundImage: `url(${photo})`,backgroundRepeat: 'no-repeat', backgroundSize: 'cover',position: 'relative', width:'70%',height:'80vh',color:'white', marginLeft:'8rem'
+      }}/>
+      <Button className={style.backBtn}> <Link to='/'>GO BACK TO HOME PAGE</Link></Button>
     </>
   );
 };
