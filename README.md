@@ -1,6 +1,7 @@
  # Travel Blog
   * Front end - ReactJS
   * Back end - Firebase
+  * Deploy: https://my-react-travel-blog.herokuapp.com/
 
  ## Idea
 This application simmulates a social network for sharing information about trips and adventures. 
