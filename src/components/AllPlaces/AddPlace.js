@@ -27,12 +27,13 @@ const AddPlace = (props) => {
     })
         return;
     }
-    if (imageUrl === '') {
+    if (imageUrl == '') {
       toast.success(`You must add photo of the visited place.`, {
         type: "error",
         autoClose: 2000,
         position: "top-center",
     })
+    return;
     }
     if(description.length < 10){
       toast.success(`You must add larger description.`, {
@@ -40,6 +41,7 @@ const AddPlace = (props) => {
         autoClose: 2000,
         position: "top-center",
     })
+    return;
     }
 
     try {

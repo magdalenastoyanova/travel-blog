@@ -16,7 +16,42 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
+
+  const onChangeHandler = (event) => {
+    const { name, value } = event.currentTarget;
+
+    if (name === "userEmail") {
+      setEmail(value);
+    } else if (name === "userPassword") {
+      setPassword(value);
+    } else if (name === "rePassword") {
+      setRePassword(value);
+    }
+  };
+
   const signUp = () => {
+    if (email === '') {
+      toast.success(`You must add your email.`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
+        return;
+    }if (password === '') {
+      toast.success(`You must insert your password.`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
+        return;
+    }if (rePassword === '') {
+      toast.success(`Please repeat your password.`, {
+        type: "error",
+        autoClose: 2000,
+        position: "top-center",
+    })
+        return;
+    }
     if (password != rePassword) {
       toast.success(`Password must match!`, {
         type: "error",
@@ -45,17 +80,7 @@ const Register = (props) => {
 
 
   };
-  const onChangeHandler = (event) => {
-    const { name, value } = event.currentTarget;
 
-    if (name === "userEmail") {
-      setEmail(value);
-    } else if (name === "userPassword") {
-      setPassword(value);
-    } else if (name === "rePassword") {
-      setRePassword(value);
-    }
-  };
   return (
     <>
       <Header />
@@ -72,9 +97,9 @@ const Register = (props) => {
             <i className="fas fa-user"></i>
             <input
               className= {style.addInput}
-              type="text"
+              type="email"
               name="userEmail"
-              id="username"
+              id="userEmail"
               value={email}
               onChange={(event) => onChangeHandler(event)}
             />
@@ -88,7 +113,7 @@ const Register = (props) => {
               className= {style.addInput}
               type="password"
               name="userPassword"
-              id="password"
+              id="userPassword"
               value={password}
               onChange={(event) => onChangeHandler(event)}
             />
