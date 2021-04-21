@@ -36,3 +36,11 @@
     background: white;
     cursor: pointer;
 }
+@media all and (max-width: 600px) {
+    .logoutWrapper{
+     width: 90%;
+    }
+    .logoutHeader{
+      font-size: 1.2rem;
+    }
+     }

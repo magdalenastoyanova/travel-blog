@@ -76,5 +76,13 @@ align-items: center;
               0 0 50px #722364,
               0 0 100px #722364;
 }
+@media all and (max-width: 600px) {
+  .loginBox {
+    width: 90%;
+  }
+  .editBtn{
+    margin-left: -2.3rem;
+  }
+}
 
 

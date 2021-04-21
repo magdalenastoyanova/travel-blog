@@ -85,3 +85,10 @@ footer{
   right: 10px;
   top: 4rem;
 }
+
+@media all and (max-width: 600px) {
+  .textOverImage {
+    margin-left: 3.5rem;
+  }
+}
+

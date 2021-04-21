@@ -50,7 +50,6 @@ align-items: center;
 }
 .editBtn{
   margin-left: 10px;
-  text-decoration: none;
 }
 .deleteBtn:hover, .editBtn:hover{
   background: #722364;
@@ -60,4 +59,20 @@ align-items: center;
               0 0 25px #722364,
               0 0 50px #722364,
               0 0 100px #722364;
+}
+@media all and (max-width: 600px) {
+  .heading{
+    margin-left: -2.5rem;
+  }
+  .imageUrl {
+    width: 80%;
+
+  }
+  .descriptionn{
+    width: 90%;
+    height: 70vh;
+  }
+  .actions{
+    margin-left: -3rem;
+  }
 }
